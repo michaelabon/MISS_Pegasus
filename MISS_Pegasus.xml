@@ -1,99 +1,106 @@
-﻿<!-- mission_data is the big wrapper for all the parts of a mission -->
-<mission_data version="1.65">
-
-  <!-- all the things that exist at the start of the mission -->
+<mission_data version="1.65" background_id_arme="">
   <start>
-    <create type="station" raceKeys="friendly" hullKeys="base" x="68000" y="0" z="8000" name="DS33" />
-    <create type="station" raceKeys="friendly" hullKeys="base" x="74000" y="0" z="26000" name="DS137" />
-    <create type="station" raceKeys="friendly" hullKeys="base" x="88000" y="0" z="40000" name="DS40" />
-    <create type="player" x="82000" y="0" z="16000" name="Artemis" />
-	<create type="neutral" raceKeys="friendly" hullKeys="cargo" x="20000" y="0" z="80000" name="Pegasus" angle="45"/>
-	<set_object_property name="Pegasus" property="willAcceptCommsOrders" value="0" />
-	<clear_ai name="Pegasus" />
-	
-	<!-- create the northwest nebulae -->
-	<create type="nebulas" count="20" startX="20000" startY="0" startZ="25000" radius="4000" startAngle="0" endAngle="360" randomRange="2000" randomSeed="2039" />
-	
-	<!-- create the mideast nebulae -->
-	<create type="nebulas" count="40" startX="69000" startY="0" startZ="61000" radius="7000" startAngle="0" endAngle="90" randomRange="4000" randomSeed="8273" />
-
-    <big_message title="THE CLIPPED PEGASUS" subtitle1="written by Mike Kenyon"/>
- 
-    <!--
-    <incoming_comms_text from="Admiral Grankov">
-      Hello, Captain.  Your mission is to^
-      proceed to DS38 and deliver your supplies.^^
-      You should be aware of a possibility of Kralien patrols in the sector.^   Good luck, Artemis!
-    </incoming_comms_text>
-	-->
-	<set_timer name="pegasus_distress_timer" seconds="20" />
-    <set_timer name="enemy_timer" seconds="20"/>
-    <set_timer name="game_timer" seconds="60"/>
+    <create type="station" x="32000.0" y="0.0" z="8000.0" angle="0" name="DS33" />
+    <create type="station" x="26000.0" y="0.0" z="26000.0" angle="0" name="DS137" />
+    <create type="station" x="12000.0" y="0.0" z="40000.0" angle="0" name="DS40" />
+    <create count="30" type="nebulas" startAngle="0" endAngle="180" startX="80000.0" startY="0.0" startZ="25000.0" radius="6000" randomRange="5000" randomSeed="2039" />
+    <create count="25" type="nebulas" startAngle="270" endAngle="360" startX="22440.0" startY="0.0" startZ="72926.0" radius="10000" randomRange="4000" randomSeed="8273" />
+    <create count="15" type="nebulas" startAngle="90" endAngle="180" startX="43171.0" startY="0.0" startZ="74268.0" radius="10000" randomRange="4000" randomSeed="8273" />
+    <create count="30" type="nebulas" startAngle="90" endAngle="270" startX="61342.0" startY="0.0" startZ="10853.0" radius="6000" randomRange="5000" randomSeed="2039" />
+    <create count="10" type="asteroids" startX="36830.0" startY="0.0" startZ="44512.0" endX="33293.0" endY="0.0" endZ="57926.0" randomSeed="6515" />
+    <create count="10" type="asteroids" startX="43903.0" startY="0.0" startZ="53048.0" endX="40122.0" endY="0.0" endZ="66585.0" randomSeed="621" />
+    <create count="10" type="mines" startAngle="150" endAngle="245" startX="14025.0" startY="0.0" startZ="41585.0" radius="10000" randomSeed="6515" />
+    <create count="10" type="mines" startAngle="150" endAngle="245" startX="14025.0" startY="0.0" startZ="41585.0" radius="11000" randomSeed="6515" />
+    <create count="10" type="mines" startAngle="150" endAngle="245" startX="14025.0" startY="0.0" startZ="41585.0" radius="12000" randomSeed="6515" />
+    <create count="10" type="mines" startAngle="150" endAngle="245" startX="14025.0" startY="0.0" startZ="41585.0" radius="13000" randomSeed="6515" />
+    <create count="13" type="mines" startAngle="110" endAngle="410" startX="83293.0" startY="0.0" startZ="53658.0" radius="1500" randomSeed="6515" />
+    <create count="14" type="mines" startAngle="110" endAngle="410" startX="83293.0" startY="0.0" startZ="53658.0" radius="2300" randomSeed="6515" />
+    <create count="15" type="mines" startAngle="110" endAngle="410" startX="83293.0" startY="0.0" startZ="53658.0" radius="3000" randomSeed="6515" />
+    <create count="16" type="mines" startAngle="110" endAngle="410" startX="83293.0" startY="0.0" startZ="53658.0" radius="3600" randomSeed="1535" />
+    <create count="14" type="mines" startAngle="30" endAngle="120" startX="83293.0" startY="0.0" startZ="53658.0" radius="5000" randomSeed="6515" />
+    <create count="14" type="mines" startAngle="30" endAngle="120" startX="83293.0" startY="0.0" startZ="53658.0" radius="5800" randomSeed="6515" />
+    <create type="player" x="13082.0" y="0.0" z="10276.0" angle="219.2" name="Artemis" />
+    <create type="neutral" x="86220.0" y="0.0" z="85731.0" angle="290" name="Pegasus" hullID="4" />
+    <create type="station" x="83415.0" y="0.0" z="53780.0" angle="0" name="LP384" hullID="1000" />
+    <big_message title="THE CLIPPED PEGASUS" subtitle1="written by Mike Kenyon, Daniel Plemmons, and Chris Osberg" subtitle2="scripted by Mike Kenyon" />
+    <set_timer name="pegasus_distress_timer" seconds="12" />
   </start>
-
-	<!-- Sound the initial distress call -->
-	<event>
-		<if_timer_finished name="pegasus_distress_timer" />
-		<set_object_property name="Pegasus" property="topSpeed" value="0.00001" />
-		<set_object_property name="Pegasus" property="turnRate" value="0.00001" />
-		<set_object_property name="Pegasus" property="shieldStateFront" value="100" />
-		<set_object_property name="Pegasus" property="shieldStateBack" value="100" />
-		<incoming_comms_text from="Pegasus">
-			PANPAN, PANPAN! Our engine couplings^
-			have sheared completely. Requesting^
-			power transfer from all available^
-			ships.
-		</incoming_comms_text>
-	</event>
-	
-	<!-- Artemis helps the Pegasus -->
-	<event>
-		<if_exists name="DS137" />
-		<if_distance name1="Artemis" name2="Pegasus" pointX="1000" comparator="LESS_EQUAL" />
-		<if_distance name1="Artemis" name2="Pegasus" pointZ="1000" comparator="LESS_EQUAL" />
-		<direct name="Pegasus" targetName="DS137" scriptThrottle="0.2" />
-	</event>
-			
-	<!-- end game when you destroy all enemies -->
-  	<!--	We haven't spawned any enemies yet :)
-	<event>
-		<if_fleet_count comparator="LESS_EQUAL" value="0"/>
-		<big_message title="MISSION SUCCESS" subtitle1="Artemis was victorious. All threats have been neutralized."/>
-		<end_mission/>
-	</event>
-	-->
-	
-	<!-- end game when the Pegasus reaches the target -->
-	<event>
-		<if_inside_sphere name="Pegasus" centerX="100000" centerY="0" centerZ="0" radius="30000" />
-		<big_message title="MISSION SUCCESS" subtitle1="Artemis was victorious. Pegasus has been rescued." />
-		<end_mission/>
-	</event>
-	
-	<!-- end game when you're destroyed -->
-	<event>
-    	<if_not_exists name="Artemis"/>
-    	<big_message title="MISSION FAILED" subtitle1="Artemis was destroyed"/>
-    	<end_mission/>
-  	</event>
-
-	<!-- end game when Pegasus is destroyed -->
-	<event>
-		<if_not_exists name="Pegasus"/>
-		<big_message title="MISSION FAILED" subtitle1="Pegasus was destroyed"/>
-		<end_mission/>
-	</event>
-	
-	<!-- end game when all stations are destroyed -->
-	<event>
-		<if_not_exists name="DS33"/>
-		<if_not_exists name="DS137"/>
-		<if_not_exists name="DS40"/>
-		<big_message title="MISSION FAILED" subtitle1="All stations were destroyed"/>
-		<end_mission/>
-	</event>
-
-  
-
-
+  <event name_arme="Initial Distress Call" id_arme="d011db08-e25b-42e3-9aac-7bf72c2b4ec0">
+    <if_timer_finished name="pegasus_distress_timer" />
+    <if_variable name="pegasus_distress_timer_fired" comparator="NOT" value="1" />
+    <log text="pegasus_distress_timer fired" />
+    <set_variable name="pegasus_distress_timer_fired" value="1" />
+	<!-- Does this do anything? -->
+    <set_object_property property="shieldStateFront" value="98" name="Pegasus" />
+    <set_object_property property="shieldStateBack" value="98" name="Pegasus" />
+    <incoming_comms_text from="Pegasus">PANPAN, PANPAN! Our engine couplings have sheared completely. Requesting power transfer from all available ships.		</incoming_comms_text>
+    <set_object_property property="angle" value="0.0" />
+    <clear_ai name="Pegasus" />
+  </event>
+  <event name_arme="Artemis nears Pegasus" id_arme="d7d30f11-5e29-4726-b1a4-56708931d444">
+    <if_exists name="DS137" />
+    <if_distance name1="Artemis" name2="Pegasus" comparator="LESS_EQUAL" value="1000" />
+    <!--1 means "towing", 2 means "Artemis left"-->
+    <if_variable name="artemis_towing" comparator="NOT" value="1" />
+    <set_variable name="artemis_towing" value="1" />
+    <log text="artemis within towing range" />
+    <add_ai type="TARGET_THROTTLE" targetName="DS137" value1="1.0" name="Pegasus" />
+    <incoming_comms_text from="Pegasus">
+		Thanks for the push, Artemis."
+	</incoming_comms_text>
+  </event>
+  <event name_arme="Artemis leaves Pegasus" id_arme="439c1e5e-872a-4c3e-9cd8-0f6b94a41993">
+    <if_distance name1="Artemis" name2="Pegasus" comparator="GREATER" value="1000.0" />
+    <clear_ai name="Pegasus" />
+    <set_variable name="artemis_towing" value="0.0" />
+  </event>
+  <event name_arme="Initial Attack Wave Triggers" id_arme="a4c91933-7ec4-4d52-818b-11d0d9bca812">
+    <if_distance name1="Artemis" name2="Pegasus" comparator="LESS_EQUAL" value="1000" />
+    <if_variable name="initial_attack_wave_triggered" comparator="NOT" value="1" />
+    <set_variable name="initial_attack_wave_triggered" value="1" />
+    <log text="initial attack wave triggered" />
+    <set_timer name="initial_attack_wave" seconds="10" />
+  </event>
+  <event name_arme="Initial Attack Wave Fires" id_arme="a75e0e5d-91b9-4bde-969b-c7e16105037a">
+    <if_timer_finished name="initial_attack_wave" />
+    <if_variable name="initial_attack_wave_fired" comparator="EQUALS" value="0.0" />
+    <log text="initial_attack_wave_fired" />
+    <set_variable name="initial_attack_wave_fired" value="1.0" />
+    <create type="enemy" x="89724.0" y="0.0" z="89341.0" angle="45" name="KR01" hullID="2000" fleetnumber="1" />
+    <create type="enemy" x="90234.0" y="0.0" z="88703.0" angle="45" name="KR02" hullID="2000" fleetnumber="1" />
+    <create type="enemy" x="89214.0" y="0.0" z="89978.0" angle="45" name="KR03" hullID="2000" fleetnumber="1" />
+    <add_ai type="ATTACK" targetName="Pegasus" value1="5.0" name="KR01" />
+    <add_ai type="ATTACK" targetName="Pegasus" value1="5.0" name="KR02" />
+    <add_ai type="ATTACK" targetName="Pegasus" value1="5.0" name="KR03" />
+    <incoming_comms_text from="Pegasus">Artemis, we detect multiple inbound vessels. They aren't responding to hails.</incoming_comms_text>
+    <set_timer name="secondary_attack_wave" seconds="20" />
+  </event>
+  <event name_arme="Secondary Attack Wave Fires" id_arme="e8c8e6ca-8d35-45c9-9442-1168494a0bc1">
+    <if_variable name="secondary_attack_wave" comparator="NOT" value="1.0" />
+    <if_timer_finished name="secondary_attack_wave" />
+    <log text="secondary_attack_wave fired" />
+    <set_variable name="secondary_attack_wave" value="1.0" />
+  </event>
+  <event name_arme="Pegasus saved" id_arme="5bad9ce1-19db-477c-bdee-831334da9d29">
+    <if_inside_sphere name="Pegasus" centerX="100000" centerY="0" centerZ="0" radius="30000" />
+    <big_message title="MISSION SUCCESS" subtitle1="Artemis was victorious. Pegasus has been rescued." subtitle2="" />
+    <end_mission />
+  </event>
+  <event name_arme="Artemis destroyed" id_arme="b81581da-1094-48da-94f8-806dcc83364f">
+    <if_not_exists name="Artemis" />
+    <big_message title="MISSION FAILED" subtitle1="Artemis was destroyed" subtitle2="" />
+    <end_mission />
+  </event>
+  <event name_arme="Pegasus destroyed" id_arme="41e9641c-e0d3-4079-8844-baa562cb3665">
+    <if_not_exists name="Pegasus" />
+    <big_message title="MISSION FAILED" subtitle1="Pegasus was destroyed" subtitle2="" />
+    <end_mission />
+  </event>
+  <event name_arme="All stations destroyed" id_arme="0145fe0c-aa2f-4e4d-93ea-0a72888a6537">
+    <if_not_exists name="DS33" />
+    <if_not_exists name="DS137" />
+    <if_not_exists name="DS40" />
+    <big_message title="MISSION FAILED" subtitle1="All stations were destroyed" subtitle2="" />
+    <end_mission />
+  </event>
 </mission_data>
