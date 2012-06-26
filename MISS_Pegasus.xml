@@ -24,6 +24,7 @@
     <create type="station" x="83415.0" y="0.0" z="53780.0" angle="0" name="LP384" hullID="1000" />
     <big_message title="THE CLIPPED PEGASUS" subtitle1="written by Mike Kenyon, Daniel Plemmons, and Chris Osberg" subtitle2="scripted by Mike Kenyon" />
     <set_timer name="pegasus_distress_timer" seconds="12" />
+    <set_timer name="pegasus_gives_energy" seconds="10" />
   </start>
   <event name_arme="Initial Distress Call" id_arme="d011db08-e25b-42e3-9aac-7bf72c2b4ec0">
     <if_timer_finished name="pegasus_distress_timer" />
@@ -48,6 +49,72 @@
     <incoming_comms_text from="Pegasus">
 		Thanks for the push, Artemis."
 	</incoming_comms_text>
+  </event>
+  <event name_arme="Pegasus Gives Energy: outside">
+    <if_timer_finished name="pegasus_gives_energy" />
+    <if_distance name1="Artemis" name2="Pegasus" comparator="GREATER" value="1000.0" />
+    <set_timer name="pegasus_gives_energy" seconds="10" />
+  </event>
+  <event name_arme="Pegasus Gives Energy: [0,100]">
+    <if_timer_finished name="pegasus_gives_energy" />
+    <if_distance name1="Artemis" name2="Pegasus" comparator="LESS_EQUAL" value="1000.0" />
+    <if_object_property name="Artemis" property="energy" comparator="LESS_EQUAL" value="100" />
+    <set_timer name="pegasus_gives_energy" seconds="10" />
+    <set_object_property name="Artemis" property="energy" value="250" />
+  </event>
+    <event name_arme="Pegasus Gives Energy: (200,300]">
+    <if_timer_finished name="pegasus_gives_energy" />
+    <if_distance name1="Artemis" name2="Pegasus" comparator="LESS_EQUAL" value="1000.0" />
+    <if_object_property name="Artemis" property="energy" comparator="LESS_EQUAL" value="300" />
+    <if_object_property name="Artemis" property="energy" comparator="GREATER" value="200" />
+    <set_timer name="pegasus_gives_energy" seconds="10" />
+    <set_object_property name="Artemis" property="energy" value="450" />
+  </event>
+  <event name_arme="Pegasus Gives Energy: (300,400]">
+    <if_timer_finished name="pegasus_gives_energy" />
+    <if_distance name1="Artemis" name2="Pegasus" comparator="LESS_EQUAL" value="1000.0" />
+    <if_object_property name="Artemis" property="energy" comparator="LESS_EQUAL" value="400" />
+    <if_object_property name="Artemis" property="energy" comparator="GREATER" value="300" />
+    <set_timer name="pegasus_gives_energy" seconds="10" />
+    <set_object_property name="Artemis" property="energy" value="550" />
+  </event>
+  <event name_arme="Pegasus Gives Energy: (400,500]">
+    <if_timer_finished name="pegasus_gives_energy" />
+    <if_distance name1="Artemis" name2="Pegasus" comparator="LESS_EQUAL" value="1000.0" />
+    <if_object_property name="Artemis" property="energy" comparator="LESS_EQUAL" value="500" />
+    <if_object_property name="Artemis" property="energy" comparator="GREATER" value="400" />
+    <set_timer name="pegasus_gives_energy" seconds="10" />
+    <set_object_property name="Artemis" property="energy" value="650" />
+  </event>
+  <event name_arme="Pegasus Gives Energy: (500,600]">
+    <if_timer_finished name="pegasus_gives_energy" />
+    <if_distance name1="Artemis" name2="Pegasus" comparator="LESS_EQUAL" value="1000.0" />
+    <if_object_property name="Artemis" property="energy" comparator="LESS_EQUAL" value="600" />
+    <if_object_property name="Artemis" property="energy" comparator="GREATER" value="500" />
+    <set_timer name="pegasus_gives_energy" seconds="10" />
+    <set_object_property name="Artemis" property="energy" value="750" />
+  </event>
+  <event name_arme="Pegasus Gives Energy: (600,700]">
+    <if_timer_finished name="pegasus_gives_energy" />
+    <if_distance name1="Artemis" name2="Pegasus" comparator="LESS_EQUAL" value="1000.0" />
+    <if_object_property name="Artemis" property="energy" comparator="LESS_EQUAL" value="700" />
+    <if_object_property name="Artemis" property="energy" comparator="GREATER" value="600" />
+    <set_timer name="pegasus_gives_energy" seconds="10" />
+    <set_object_property name="Artemis" property="energy" value="850" />
+  </event>
+  <event name_arme="Pegasus Gives Energy: (700, 1000]">
+    <if_timer_finished name="pegasus_gives_energy" />
+    <if_distance name1="Artemis" name2="Pegasus" comparator="LESS_EQUAL" value="1000.0" />
+    <if_object_property name="Artemis" property="energy" comparator="GREATER" value="700" />
+    <if_object_property name="Artemis" property="energy" comparator="LESS_EQUAL" value="1000" />
+    <set_timer name="pegasus_gives_energy" seconds="10" />
+    <set_object_property name="Artemis" property="energy" value="1000" />
+  </event>
+  <event name_arme="Pegasus Gives Energy: (1000, +inf)">
+    <if_timer_finished name="pegasus_gives_energy" />
+    <if_distance name1="Artemis" name2="Pegasus" comparator="LESS_EQUAL" value="1000.0" />
+    <if_object_property name="Artemis" property="energy" comparator="GREATER" value="1000" />
+    <set_timer name="pegasus_gives_energy" seconds="10" />
   </event>
   <event name_arme="Artemis leaves Pegasus" id_arme="439c1e5e-872a-4c3e-9cd8-0f6b94a41993">
     <if_distance name1="Artemis" name2="Pegasus" comparator="GREATER" value="1000.0" />
