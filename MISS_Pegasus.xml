@@ -22,9 +22,21 @@
     <create type="player" x="13082.0" y="0.0" z="10276.0" angle="219.2" name="Artemis" />
     <create type="neutral" x="86220.0" y="0.0" z="85731.0" angle="290" name="Pegasus" hullID="4" />
     <create type="station" x="83415.0" y="0.0" z="53780.0" angle="0" name="LP384" hullID="1000" />
+    <create type="neutral" x="42540.0" y="0.0" z="23538.0" angle="261.9" name="Warsaw" raceKeys="USFP friendly" hullKeys="small Destroyer" />
+    <create type="neutral" x="20351.0" y="0.0" z="33230.0" angle="129.6" name="Beamer" raceKeys="USFP friendly" hullKeys="small Battleship" />
+    <create type="neutral" x="72381.0" y="0.0" z="27236.0" angle="129.6" name="Tr35" raceKeys="USFP friendly" hullKeys="cargo Transport" />
+    <create type="neutral" x="32976.0" y="0.0" z="92401.0" angle="26" name="Tr63" raceKeys="USFP friendly" hullKeys="cargo Transport" />
+    <create type="neutral" x="86664.0" y="0.0" z="31445.0" angle="214.7" name="Tr17" raceKeys="USFP friendly" hullKeys="cargo Transport" />
+    <create type="neutral" x="11935.0" y="0.0" z="76588.0" angle="286.9" name="Tr53" raceKeys="USFP friendly" hullKeys="cargo Transport" />
+    <create type="neutral" x="54528.0" y="0.0" z="74165.0" angle="181.4" name="Tr21" raceKeys="USFP friendly" hullKeys="cargo Transport" />
+    <create type="neutral" x="62689.0" y="0.0" z="28894.0" angle="129.6" name="Tr92" raceKeys="USFP friendly" hullKeys="cargo Transport" />
+    <create type="neutral" x="33869.0" y="0.0" z="77736.0" angle="129.6" name="Tr48" raceKeys="USFP friendly" hullKeys="cargo Transport" />
     <big_message title="THE CLIPPED PEGASUS" subtitle1="written by Mike Kenyon, Daniel Plemmons, and Chris Osberg" subtitle2="scripted by Mike Kenyon" />
     <set_timer name="pegasus_distress_timer" seconds="12" />
     <set_timer name="pegasus_gives_energy" seconds="10" />
+    <!--Tr35 and Tr48 are hiding out in the nebulae. Maybe they are enemies?-->
+    <clear_ai name="Tr35" />
+    <clear_ai name="Tr48" />
   </start>
   <event name_arme="Initial Distress Call" id_arme="d011db08-e25b-42e3-9aac-7bf72c2b4ec0">
     <if_timer_finished name="pegasus_distress_timer" />
